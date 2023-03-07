@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   Entradas totais <input type="number" name="" id="inputEntradasTotais"><br>
+   Entrada no caixa <input type="number" name="" id="inputEntradasCaixa"><br>
+   Valor em vendas  <input type="number" name="" id="inputVendas"><br>
+
+   <button onclick="calcularGanho()">Calcular Quanto poderia estar ganhando</button><br>
+
+   <div id="resposta"></div>
+    
+</body>
+</html>
+
+
+<script>
+
+    function calcularGanho(){
+        let valorVendas = Number(inputVendas.value)
+        let entradasTotais = Number(inputEntradasTotais.value)
+        let entradasCaixa = Number(inputEntradasCaixa.value)
+
+        
+        let naoCompradores = entradasTotais - entradasCaixa;
+
+        let mediaPorComprador = valorVendas/entradasCaixa;
+
+        let possivelGanho = entradasTotais * mediaPorComprador;
+        
+        let perda = naoCompradores* mediaPorComprador
+
+        let resposta = document.getElementById('resposta')
+        
+        console.log(possivelGanho)
+        console.log(perda)
+
+        resposta.innerHTML = `Com ${entradasTotais} entradas totais e ${entradasCaixa} vendas arrecadando uma media de R$${mediaPorComprador} por comprador <br>
+        se todas suas entradas se convertessem em vendas, seu valor total seria de R$${possivelGanho} e está perdendo 
+        R$${perda} deixando de vender para estes clientes
+        `
+    }
+</script>
